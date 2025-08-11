@@ -40,7 +40,19 @@ public class TopicService {
         log.info(parentChoices.toString());
         return parentChoices;
     }
-
+    public String convertTopicNameToMeaningfulName(String topicId) {
+        Topic topic = topicRepository.findById(topicId).orElse(null);
+        if (topic == null) return "root";
+        Map<String, Topic> topicMap = topicRepository.findAll().stream()
+                .collect(Collectors.toMap(Topic::getId, t -> t));
+        StringBuilder path = new StringBuilder(topic.getName());
+        Topic current = topic;
+        while (current.getParentId() != null && topicMap.containsKey(current.getParentId())) {
+            current = topicMap.get(current.getParentId());
+            path.insert(0, current.getName() + "/");
+        }
+        return path.toString();
+    }
 
 
 }
