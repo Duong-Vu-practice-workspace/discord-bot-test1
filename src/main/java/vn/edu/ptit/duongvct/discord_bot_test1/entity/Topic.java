@@ -1,21 +1,18 @@
 package vn.edu.ptit.duongvct.discord_bot_test1.entity;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 @Getter
 @Setter
-@SuperBuilder
-@NoArgsConstructor
-@Document
-public class DiscordUser {
+public class Topic {
     @Id
     private String id;
-    private String username;
-    private String avatarUrl;
-    private String globalName;
+    private String parentId;
+    private String name;
+    private String description;
+    private String userId;
 }

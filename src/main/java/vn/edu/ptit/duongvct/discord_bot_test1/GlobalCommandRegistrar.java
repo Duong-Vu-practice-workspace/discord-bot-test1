@@ -1,65 +1,49 @@
 package vn.edu.ptit.duongvct.discord_bot_test1;
 
-import discord4j.discordjson.json.ApplicationCommandOptionData;
+import discord4j.discordjson.json.ApplicationCommandOptionChoiceData;
 import discord4j.discordjson.json.ApplicationCommandRequest;
 import discord4j.rest.RestClient;
 import discord4j.rest.service.ApplicationService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.*;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.CreateTopicCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
+
 
 import java.util.Arrays;
 import java.util.List;
 
+import static vn.edu.ptit.duongvct.discord_bot_test1.command_request.GetAvatarCommandRequest.GET_AVATAR_COMMAND_REQUEST;
+import static vn.edu.ptit.duongvct.discord_bot_test1.command_request.GreetCommandRequest.GREET_COMMAND_REQUEST;
+import static vn.edu.ptit.duongvct.discord_bot_test1.command_request.PingCommandRequest.PING_COMMAND_REQUEST;
+
 @Component
+@AllArgsConstructor
+@Slf4j
 public class GlobalCommandRegistrar implements ApplicationRunner {
-    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
-
     private final RestClient client;
-
-    public GlobalCommandRegistrar(RestClient client) {
-        this.client = client;
-    }
+    private final TopicService topicService;
 
     @Override
     public void run(ApplicationArguments args) {
         final ApplicationService applicationService = client.getApplicationService();
         final long applicationId = client.getApplicationId().block();
-
         // Define your commands here
         List<ApplicationCommandRequest> commands = Arrays.asList(
-                ApplicationCommandRequest.builder()
-                        .name(SlashCommandCommon.GREET_COMMAND)
-                        .description(GreetCommandCommon.GREET_COMMAND_DESCRIPTION)
-                        .addOption(ApplicationCommandOptionData.builder()
-                                .name(GreetCommandCommon.USER_PARAMETER)
-                                .description(GreetCommandCommon.GreetParameterCommon.USER_PARAMETER_DESCRIPTION)
-                                .type(DiscordParameterType.getType(DiscordParameterType.USER))
-                                .required(true).build()
-                        )
-                        .build(),
-                ApplicationCommandRequest.builder()
-                        .name(SlashCommandCommon.PING_COMMAND)
-                        .description(PingCommandCommon.PING_COMMAND_DESCRIPTION)
-                        .build(),
-                ApplicationCommandRequest.builder()
-                        .name(SlashCommandCommon.GET_AVATAR_COMMAND)
-                        .description(GetAvatarCommandCommon.GET_AVATAR_COMMAND_DESCRIPTION)
-                        .addOption(ApplicationCommandOptionData.builder()
-                                .name(GetAvatarCommandCommon.USER_PARAMETER)
-                                .description(GetAvatarCommandCommon.GetAvatarParameter.USER_PARAMETER_DESCRIPTION)
-                                .type(DiscordParameterType.getType(DiscordParameterType.USER))
-                                .required(true)
-                                .build())
-                        .build()
+                GREET_COMMAND_REQUEST(),
+                PING_COMMAND_REQUEST(),
+                GET_AVATAR_COMMAND_REQUEST(),
+                CreateTopicCommandRequest.CREATE_TOPIC_COMMAND_REQUEST()
         );
 
         applicationService.bulkOverwriteGlobalApplicationCommand(applicationId, commands)
-                .doOnNext(ignore -> LOGGER.debug("Successfully registered Global Commands"))
-                .doOnError(e -> LOGGER.error("Failed to register global commands", e))
+                .doOnNext(ignore -> log.debug("Successfully registered Global Commands"))
+                .doOnError(e -> log.error("Failed to register global commands", e))
                 .subscribe();
     }
 }

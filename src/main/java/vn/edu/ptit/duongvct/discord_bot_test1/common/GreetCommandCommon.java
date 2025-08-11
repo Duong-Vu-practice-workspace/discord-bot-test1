@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GreetCommandCommon {
+public final class GreetCommandCommon {
     public static final String USER_PARAMETER = "user";
     public static final String GREET_COMMAND_DESCRIPTION = "Greet a user";
     public static class GreetParameterCommon {
