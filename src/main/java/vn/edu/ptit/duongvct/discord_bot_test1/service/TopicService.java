@@ -22,12 +22,13 @@ import static vn.edu.ptit.duongvct.discord_bot_test1.command_request.CreateTopic
 @AllArgsConstructor
 public class TopicService {
     private final TopicRepository topicRepository;
-    public List<ApplicationCommandOptionChoiceData> getAllTopicChoices(String userId) {
+    public List<ApplicationCommandOptionChoiceData> getAllTopicChoices(String query, String userId) {
+
         List<Topic> allTopics = topicRepository.findAllByUserId(userId);
         Map<String, Topic> topicMap = allTopics.stream()
                 .collect(Collectors.toMap(Topic::getId, t -> t));
 
-        ArrayList<ApplicationCommandOptionChoiceData> parentChoices = new ArrayList<>(topicRepository.findAll().stream()
+        ArrayList<ApplicationCommandOptionChoiceData> parentChoices = new ArrayList<>(topicRepository.findByUserIdAndNameContainingIgnoreCase(userId, query).stream()
                 .map(topic -> ApplicationCommandOptionChoiceData.builder()
                         .name(buildTopicPath(topic, topicMap))
                         .value(topic.getId())

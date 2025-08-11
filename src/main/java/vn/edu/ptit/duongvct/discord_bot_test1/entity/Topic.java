@@ -2,12 +2,14 @@ package vn.edu.ptit.duongvct.discord_bot_test1.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @Getter
 @Setter
+@ToString
 public class Topic {
     @Id
     private String id;

@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface TopicRepository extends MongoRepository<Topic, String> {
     List<Topic> findAllByUserId(String userId);
+    List<Topic> findByUserIdAndNameContainingIgnoreCase(String userId, String name);
 }

@@ -10,6 +10,7 @@ import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 @AllArgsConstructor
@@ -24,10 +25,12 @@ public class CreateTopicAutoCompleteHandler implements AutoCompleteHandler {
     @Override
     public Mono<Void> handle(ChatInputAutoCompleteEvent event) {
         String userId = event.getInteraction().getUser().getId().asString();
-
+        String query = Objects.requireNonNull(event.getFocusedOption().getValue().orElse(null)).asString();
         List<ApplicationCommandOptionChoiceData> choices =
-                topicService.getAllTopicChoices(userId);
-
+                topicService.getAllTopicChoices(query, userId)
+                        .stream()
+                        .limit(25)
+                        .toList();
         return event.respondWithSuggestions(choices);
     }
 }
