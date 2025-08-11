@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.CreateEventCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.CreateTopicCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
@@ -38,7 +39,8 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
                 GREET_COMMAND_REQUEST(),
                 PING_COMMAND_REQUEST(),
                 GET_AVATAR_COMMAND_REQUEST(),
-                CreateTopicCommandRequest.CREATE_TOPIC_COMMAND_REQUEST()
+                CreateTopicCommandRequest.CREATE_TOPIC_COMMAND_REQUEST(),
+                CreateEventCommandRequest.CREATE_EVENT_COMMAND_REQUEST()
         );
 
         applicationService.bulkOverwriteGlobalApplicationCommand(applicationId, commands)

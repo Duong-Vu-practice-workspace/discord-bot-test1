@@ -1,6 +1,8 @@
 package vn.edu.ptit.duongvct.discord_bot_test1.commands;
 
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
+import discord4j.core.object.command.ApplicationCommandInteractionOption;
+import discord4j.core.object.command.ApplicationCommandInteractionOptionValue;
 import discord4j.core.object.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -23,18 +25,18 @@ public class CreateTopicCommand implements SlashCommand{
     public Mono<Void> handle(ChatInputInteractionEvent event) {
         User user = event.getInteraction().getUser();
         String name = event.getOption(CreateTopicCommandCommon.NAME_PARAMETER)
-                .flatMap(opt -> opt.getValue())
-                .map(val -> val.asString())
+                .flatMap(ApplicationCommandInteractionOption::getValue)
+                .map(ApplicationCommandInteractionOptionValue::asString)
                 .orElse("Unnamed");
 
         String description = event.getOption(CreateTopicCommandCommon.DESCRIPTION_PARAMETER)
-                .flatMap(opt -> opt.getValue())
-                .map(val -> val.asString())
+                .flatMap(ApplicationCommandInteractionOption::getValue)
+                .map(ApplicationCommandInteractionOptionValue::asString)
                 .orElse("");
 
         String parentId = event.getOption(CreateTopicCommandCommon.PARENT_ID_PARAMETER)
-                .flatMap(opt -> opt.getValue())
-                .map(val -> val.asString())
+                .flatMap(ApplicationCommandInteractionOption::getValue)
+                .map(ApplicationCommandInteractionOptionValue::asString)
                 .orElse("root");
 
         Topic topic = new Topic();
