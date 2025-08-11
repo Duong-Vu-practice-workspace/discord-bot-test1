@@ -63,3 +63,5 @@ replay_pid*
 
 
 **/application.yml
+
+**/credentials.json

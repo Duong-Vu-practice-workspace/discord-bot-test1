@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.CreateEventCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Event;
-import vn.edu.ptit.duongvct.discord_bot_test1.repository.EventRepository;
+import vn.edu.ptit.duongvct.discord_bot_test1.service.EventService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +19,7 @@ import java.time.format.DateTimeParseException;
 @Component
 @AllArgsConstructor
 public class CreateEventCommand implements SlashCommand{
-    private final EventRepository eventRepository;
+    private final EventService eventService;
     @Override
     public String getName() {
         return SlashCommandCommon.CREATE_EVENT_COMMAND;
@@ -66,8 +66,8 @@ public class CreateEventCommand implements SlashCommand{
                     .userId(user.getId().asString())
                     .build();
 
-            eventRepository.save(ev);
-            return "New event created: " + ev;
+            Event savedEvent = eventService.createEvent(ev);
+            return "New event created: " + savedEvent.getName() + " (synced with Google Calendar)";
         }).flatMap(msg -> event.reply()
                 .withEphemeral(true)
                 .withContent(msg)

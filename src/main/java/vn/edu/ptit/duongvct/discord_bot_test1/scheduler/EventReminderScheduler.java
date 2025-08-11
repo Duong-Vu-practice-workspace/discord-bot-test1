@@ -7,6 +7,7 @@ import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Event;
@@ -25,9 +26,22 @@ public class EventReminderScheduler {
     private final EventRepository eventRepository;
     private final GatewayDiscordClient discordClient;
     private final TopicService topicService;
-    private static final long CHANNEL_ID = 1388007038390374400L;
+    @Value("${event.notification.channel.id}")
+    private long CHANNEL_ID;
     private static final long SCAN_TIME_PERIOD = 60 * 1000;
-    private void sendReminderEmbed(Event event, String timeText) {
+
+    private void sendReminderEmbedAndInline(Event event, String timeText) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String userPing = "<@" + event.getUserId() + ">";
+        String inlineMsg = String.format("%s: **%s** | %s → %s | %s",
+                userPing,
+                event.getName(),
+                event.getStartTime().format(formatter),
+                event.getEndTime().format(formatter),
+                event.getLocation()
+        );
+
+        // Send embed message
         discordClient.getChannelById(Snowflake.of(CHANNEL_ID))
                 .ofType(MessageChannel.class)
                 .flatMap(channel -> channel.createMessage(
@@ -35,6 +49,12 @@ public class EventReminderScheduler {
                                 .addEmbed(buildEventEmbed(event, timeText))
                                 .build()
                 ))
+                .subscribe();
+
+        // Send inline ping message
+        discordClient.getChannelById(Snowflake.of(CHANNEL_ID))
+                .ofType(MessageChannel.class)
+                .flatMap(channel -> channel.createMessage(inlineMsg))
                 .subscribe();
     }
 
@@ -48,7 +68,7 @@ public class EventReminderScheduler {
                 .addField("Location", event.getLocation(), false)
                 .addField("Start Time", event.getStartTime().format(formatter), true)
                 .addField("End Time", event.getEndTime().format(formatter), true)
-                .addField("Topic ID", topicService.convertTopicNameToMeaningfulName(event.getTopicId()), true)
+                .addField("Topic", topicService.convertTopicNameToMeaningfulName(event.getTopicId()), true)
                 .build();
     }
 
@@ -64,18 +84,18 @@ public class EventReminderScheduler {
             Duration duration = Duration.between(now, startTime);
 
             String timeText = null;
-            if (duration.toMinutes() <= 1440 && duration.toMinutes() > 1430) {
+            if (duration.toMinutes() <= 1440 && duration.toMinutes() >= 1439) {
                 timeText = "**Starts in 1 day!**";
-            } else if (duration.toMinutes() <= 60 && duration.toMinutes() > 50) {
+            } else if (duration.toMinutes() <= 60 && duration.toMinutes() >= 59) {
                 timeText = "**Starts in 1 hour!**";
-            } else if (duration.toMinutes() <= 30 && duration.toMinutes() > 25) {
+            } else if (duration.toMinutes() <= 30 && duration.toMinutes() >= 29) {
                 timeText = "**Starts in 30 minutes!**";
-            } else if (duration.toMinutes() <= 15 && duration.toMinutes() > 10) {
+            } else if (duration.toMinutes() <= 15 && duration.toMinutes() >= 14) {
                 timeText = "**Starts in 15 minutes!**";
             }
 
             if (timeText != null) {
-                sendReminderEmbed(event, timeText);
+                sendReminderEmbedAndInline(event, timeText);
             }
         }
     }
