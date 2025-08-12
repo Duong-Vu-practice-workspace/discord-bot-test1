@@ -11,7 +11,6 @@ import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.topic.TopicCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Topic;
-import vn.edu.ptit.duongvct.discord_bot_test1.repository.TopicRepository;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
 @Component
@@ -33,6 +32,9 @@ public class GetTopicCommand implements SlashCommand {
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
             Topic topic = topicService.findTopicById(topicId);
+            if (topic == null) {
+                throw new IllegalArgumentException("Topic not found");
+            }
             return EmbedCreateSpec.builder()
                     .title("Topic Details")
                     .addField("ID", topic.getId(), false)
