@@ -1,11 +1,12 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.commands;
+package vn.edu.ptit.duongvct.discord_bot_test1.commands.basic;
 
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.core.object.command.ApplicationCommandInteractionOption;
 import discord4j.core.object.entity.User;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.GreetCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.basic.GreetCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 
 @Component

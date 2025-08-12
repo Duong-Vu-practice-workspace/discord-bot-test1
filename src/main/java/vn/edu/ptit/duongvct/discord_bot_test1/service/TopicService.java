@@ -1,8 +1,6 @@
 package vn.edu.ptit.duongvct.discord_bot_test1.service;
 
-import discord4j.core.object.command.ApplicationCommandOptionChoice;
 import discord4j.discordjson.json.ApplicationCommandOptionChoiceData;
-import discord4j.discordjson.json.ImmutableApplicationCommandOptionChoiceData;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -10,12 +8,11 @@ import vn.edu.ptit.duongvct.discord_bot_test1.entity.Topic;
 import vn.edu.ptit.duongvct.discord_bot_test1.repository.TopicRepository;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static vn.edu.ptit.duongvct.discord_bot_test1.command_request.CreateTopicCommandRequest.buildTopicPath;
+import static vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.CreateTopicCommandRequest.buildTopicPath;
 
 @Service
 @Slf4j

@@ -13,4 +13,6 @@ public final class SlashCommandCommon {
     public static final String GET_AVATAR_COMMAND = "get-avatar";
     public static final String CREATE_TOPIC_COMMAND = "create-topic";
     public static final String CREATE_EVENT_COMMAND = "create-event";
+    public static final String CREATE_COURSE_COMMAND = "create-course";
+    public static final String CREATE_RESOURCE_COMMAND = "create-resource";
 }

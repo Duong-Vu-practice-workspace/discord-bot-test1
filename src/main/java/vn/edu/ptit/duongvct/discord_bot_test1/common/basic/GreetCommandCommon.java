@@ -1,4 +1,4 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.common;
+package vn.edu.ptit.duongvct.discord_bot_test1.common.basic;
 
 import lombok.Getter;
 import lombok.Setter;

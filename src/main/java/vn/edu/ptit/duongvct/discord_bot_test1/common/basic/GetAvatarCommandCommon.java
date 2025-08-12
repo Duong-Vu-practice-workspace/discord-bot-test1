@@ -1,4 +1,4 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.common;
+package vn.edu.ptit.duongvct.discord_bot_test1.common.basic;
 
 public final class GetAvatarCommandCommon {
     public static final String GET_AVATAR_COMMAND_DESCRIPTION = "Get a user's avatar";

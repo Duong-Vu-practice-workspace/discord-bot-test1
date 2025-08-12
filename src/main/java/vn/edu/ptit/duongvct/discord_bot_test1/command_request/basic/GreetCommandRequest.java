@@ -1,11 +1,11 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.command_request;
+package vn.edu.ptit.duongvct.discord_bot_test1.command_request.basic;
 
 import discord4j.discordjson.json.ApplicationCommandOptionData;
 import discord4j.discordjson.json.ApplicationCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.DiscordParameterType;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.GreetCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.basic.GreetCommandCommon;
 
-import static vn.edu.ptit.duongvct.discord_bot_test1.common.GreetCommandCommon.GREET_COMMAND_DESCRIPTION;
+import static vn.edu.ptit.duongvct.discord_bot_test1.common.basic.GreetCommandCommon.GREET_COMMAND_DESCRIPTION;
 import static vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon.GREET_COMMAND;
 
 public final class GreetCommandRequest {

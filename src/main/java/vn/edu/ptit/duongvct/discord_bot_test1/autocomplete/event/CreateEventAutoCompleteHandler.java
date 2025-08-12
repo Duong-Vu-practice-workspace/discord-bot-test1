@@ -1,11 +1,12 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.autocomplete;
+package vn.edu.ptit.duongvct.discord_bot_test1.autocomplete.event;
 
 import discord4j.core.event.domain.interaction.ChatInputAutoCompleteEvent;
 import discord4j.discordjson.json.ApplicationCommandOptionChoiceData;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.CreateEventCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.autocomplete.AutoCompleteHandler;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.event.CreateEventCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
@@ -14,7 +15,7 @@ import java.util.Objects;
 
 @Component
 @AllArgsConstructor
-public class CreateEventAutoCompleteHandler implements AutoCompleteHandler{
+public class CreateEventAutoCompleteHandler implements AutoCompleteHandler {
     private final TopicService topicService;
     @Override
     public boolean supports(ChatInputAutoCompleteEvent event) {

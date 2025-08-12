@@ -1,4 +1,4 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.commands;
+package vn.edu.ptit.duongvct.discord_bot_test1.commands.topic;
 
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.core.object.command.ApplicationCommandInteractionOption;
@@ -7,14 +7,15 @@ import discord4j.core.object.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.CreateTopicCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.topic.CreateTopicCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Topic;
 import vn.edu.ptit.duongvct.discord_bot_test1.repository.TopicRepository;
 
 import static vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon.CREATE_TOPIC_COMMAND;
 @Component
 @AllArgsConstructor
-public class CreateTopicCommand implements SlashCommand{
+public class CreateTopicCommand implements SlashCommand {
     private final TopicRepository topicRepository;
     @Override
     public String getName() {

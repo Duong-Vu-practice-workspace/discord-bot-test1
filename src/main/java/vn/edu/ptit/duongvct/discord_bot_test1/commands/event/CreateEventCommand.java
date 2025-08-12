@@ -1,4 +1,4 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.commands;
+package vn.edu.ptit.duongvct.discord_bot_test1.commands.event;
 
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.core.object.command.ApplicationCommandInteractionOption;
@@ -7,7 +7,8 @@ import discord4j.core.object.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.CreateEventCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.event.CreateEventCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Event;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.EventService;
@@ -18,7 +19,7 @@ import java.time.format.DateTimeParseException;
 
 @Component
 @AllArgsConstructor
-public class CreateEventCommand implements SlashCommand{
+public class CreateEventCommand implements SlashCommand {
     private final EventService eventService;
     @Override
     public String getName() {

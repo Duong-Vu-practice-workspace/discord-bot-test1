@@ -1,17 +1,15 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.command_request;
+package vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic;
 
-import discord4j.discordjson.json.ApplicationCommandOptionChoiceData;
 import discord4j.discordjson.json.ApplicationCommandOptionData;
 import discord4j.discordjson.json.ApplicationCommandRequest;
 import lombok.extern.slf4j.Slf4j;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.CreateTopicCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.topic.CreateTopicCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.DiscordParameterType;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Topic;
 
-import java.util.List;
 import java.util.Map;
 
-import static vn.edu.ptit.duongvct.discord_bot_test1.common.CreateTopicCommandCommon.CREATE_TOPIC_COMMAND_DESCRIPTION;
+import static vn.edu.ptit.duongvct.discord_bot_test1.common.topic.CreateTopicCommandCommon.CREATE_TOPIC_COMMAND_DESCRIPTION;
 import static vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon.CREATE_TOPIC_COMMAND;
 
 @Slf4j

@@ -1,9 +1,9 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.command_request;
+package vn.edu.ptit.duongvct.discord_bot_test1.command_request.event;
 
 import discord4j.discordjson.json.ApplicationCommandOptionData;
 import discord4j.discordjson.json.ApplicationCommandRequest;
 import lombok.extern.slf4j.Slf4j;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.CreateEventCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.event.CreateEventCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.DiscordParameterType;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 

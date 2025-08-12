@@ -1,4 +1,4 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.common;
+package vn.edu.ptit.duongvct.discord_bot_test1.common.event;
 
 public final class CreateEventCommandCommon {
     public static final String CREATE_EVENT_COMMAND_DESCRIPTION = "Create an event";

@@ -1,8 +1,9 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.commands;
+package vn.edu.ptit.duongvct.discord_bot_test1.commands.basic;
 
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
+import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 
 @Component

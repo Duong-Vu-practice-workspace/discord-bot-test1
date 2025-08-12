@@ -1,20 +1,20 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.commands;
+package vn.edu.ptit.duongvct.discord_bot_test1.commands.basic;
 
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
-import discord4j.core.object.Embed;
 import discord4j.core.object.command.ApplicationCommandInteractionOption;
 import discord4j.core.object.entity.User;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.rest.util.Color;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.GetAvatarCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.basic.GetAvatarCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 
 import java.time.Instant;
 
 @Component
-public class GetAvatarCommand implements SlashCommand{
+public class GetAvatarCommand implements SlashCommand {
     @Override
     public String getName() {
         return SlashCommandCommon.GET_AVATAR_COMMAND;

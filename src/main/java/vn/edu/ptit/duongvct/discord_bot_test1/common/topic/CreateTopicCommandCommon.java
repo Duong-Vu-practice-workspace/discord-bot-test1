@@ -1,4 +1,4 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.common;
+package vn.edu.ptit.duongvct.discord_bot_test1.common.topic;
 
 public final class CreateTopicCommandCommon {
     public static final String CREATE_TOPIC_COMMAND_DESCRIPTION = "Create a topic";

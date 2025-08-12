@@ -1,9 +1,9 @@
-package vn.edu.ptit.duongvct.discord_bot_test1.command_request;
+package vn.edu.ptit.duongvct.discord_bot_test1.command_request.basic;
 
 import discord4j.discordjson.json.ApplicationCommandOptionData;
 import discord4j.discordjson.json.ApplicationCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.DiscordParameterType;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.GetAvatarCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.basic.GetAvatarCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 
 public final class GetAvatarCommandRequest {
