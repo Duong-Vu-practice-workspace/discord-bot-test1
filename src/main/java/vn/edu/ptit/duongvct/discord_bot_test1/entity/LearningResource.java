@@ -21,5 +21,6 @@ public class LearningResource {
     private String link;
     private String courseId;
     private String userId;
+    private String topicId;
     private ResourceType type;
 }

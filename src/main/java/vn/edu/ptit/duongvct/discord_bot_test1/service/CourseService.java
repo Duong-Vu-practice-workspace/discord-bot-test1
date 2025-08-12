@@ -1,5 +1,6 @@
 package vn.edu.ptit.duongvct.discord_bot_test1.service;
 
+import discord4j.discordjson.json.ApplicationCommandOptionChoiceData;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Course;
 import vn.edu.ptit.duongvct.discord_bot_test1.repository.CourseRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,5 +26,14 @@ public class CourseService {
     private boolean validateCourse(Course course) {
         List<Course> courses = this.courseRepository.findByName(course.getName());
         return courses.isEmpty();
+    }
+    public List<ApplicationCommandOptionChoiceData> getAllCourseChoices(String query, String userId) {
+        return new ArrayList<>(courseRepository.findByUserIdAndNameContainingIgnoreCase(userId, query)
+                .stream()
+                .map(course -> ApplicationCommandOptionChoiceData.builder()
+                        .name(course.getName())
+                        .value(course.getId())
+                        .build())
+                .toList());
     }
 }

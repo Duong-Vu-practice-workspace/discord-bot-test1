@@ -10,6 +10,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.course.CreateCourseCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.event.CreateEventCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.learning_resource.CreateResourceCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.CreateTopicCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
@@ -39,7 +40,8 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
                 GET_AVATAR_COMMAND_REQUEST(),
                 CreateTopicCommandRequest.CREATE_TOPIC_COMMAND_REQUEST(),
                 CreateEventCommandRequest.CREATE_EVENT_COMMAND_REQUEST(),
-                CreateCourseCommandRequest.CREATE_COURSE_COMMAND_REQUEST()
+                CreateCourseCommandRequest.CREATE_COURSE_COMMAND_REQUEST(),
+                CreateResourceCommandRequest.CREATE_RESOURCE_COMMAND_REQUEST()
         );
 
         applicationService.bulkOverwriteGlobalApplicationCommand(applicationId, commands)
