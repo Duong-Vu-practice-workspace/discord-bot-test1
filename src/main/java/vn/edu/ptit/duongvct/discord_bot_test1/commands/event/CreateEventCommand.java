@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.event.CreateEventCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.event.EventCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Event;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.EventService;
@@ -30,27 +30,27 @@ public class CreateEventCommand implements SlashCommand {
     public Mono<Void> handle(ChatInputInteractionEvent event) {
         return Mono.fromCallable(() -> {
             User user = event.getInteraction().getUser();
-            String name = event.getOption(CreateEventCommandCommon.NAME_PARAMETER)
+            String name = event.getOption(EventCommandCommon.NAME_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("Unnamed");
-            String description = event.getOption(CreateEventCommandCommon.DESCRIPTION_PARAMETER)
+            String description = event.getOption(EventCommandCommon.DESCRIPTION_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
-            String location = event.getOption(CreateEventCommandCommon.LOCATION_PARAMETER)
+            String location = event.getOption(EventCommandCommon.LOCATION_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
-            String topicId = event.getOption(CreateEventCommandCommon.TOPIC_ID_PARAMETER)
+            String topicId = event.getOption(EventCommandCommon.TOPIC_ID_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
-            String startTimeString = event.getOption(CreateEventCommandCommon.START_TIME_PARAMETER)
+            String startTimeString = event.getOption(EventCommandCommon.START_TIME_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
-            String endTimeString = event.getOption(CreateEventCommandCommon.END_TIME_PARAMETER)
+            String endTimeString = event.getOption(EventCommandCommon.END_TIME_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");

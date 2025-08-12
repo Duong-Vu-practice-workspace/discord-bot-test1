@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.topic.CreateTopicCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.topic.TopicCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Topic;
 import vn.edu.ptit.duongvct.discord_bot_test1.repository.TopicRepository;
 
@@ -25,17 +25,17 @@ public class CreateTopicCommand implements SlashCommand {
     @Override
     public Mono<Void> handle(ChatInputInteractionEvent event) {
         User user = event.getInteraction().getUser();
-        String name = event.getOption(CreateTopicCommandCommon.NAME_PARAMETER)
+        String name = event.getOption(TopicCommandCommon.NAME_PARAMETER)
                 .flatMap(ApplicationCommandInteractionOption::getValue)
                 .map(ApplicationCommandInteractionOptionValue::asString)
                 .orElse("Unnamed");
 
-        String description = event.getOption(CreateTopicCommandCommon.DESCRIPTION_PARAMETER)
+        String description = event.getOption(TopicCommandCommon.DESCRIPTION_PARAMETER)
                 .flatMap(ApplicationCommandInteractionOption::getValue)
                 .map(ApplicationCommandInteractionOptionValue::asString)
                 .orElse("");
 
-        String parentId = event.getOption(CreateTopicCommandCommon.PARENT_ID_PARAMETER)
+        String parentId = event.getOption(TopicCommandCommon.PARENT_ID_PARAMETER)
                 .flatMap(ApplicationCommandInteractionOption::getValue)
                 .map(ApplicationCommandInteractionOptionValue::asString)
                 .orElse("root");

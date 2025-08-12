@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.course.CreateCourseCommandCommon;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.event.CreateEventCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.course.CourseCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Course;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.CourseMark;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.CourseService;
@@ -27,47 +26,47 @@ public class CreateCourseCommand implements SlashCommand {
     public Mono<Void> handle(ChatInputInteractionEvent event) {
         return Mono.fromCallable(() -> {
             User user = event.getInteraction().getUser();
-            String name = event.getOption(CreateCourseCommandCommon.NAME_PARAMETER)
+            String name = event.getOption(CourseCommandCommon.NAME_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("Unnamed");
-            String description = event.getOption(CreateCourseCommandCommon.DESCRIPTION_PARAMETER)
+            String description = event.getOption(CourseCommandCommon.DESCRIPTION_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
-            String topicId = event.getOption(CreateCourseCommandCommon.TOPIC_ID_PARAMETER)
+            String topicId = event.getOption(CourseCommandCommon.TOPIC_ID_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
-            Double ccWeight = event.getOption(CreateCourseCommandCommon.CC_WEIGHT_PARAMETER)
+            Double ccWeight = event.getOption(CourseCommandCommon.CC_WEIGHT_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asDouble)
                     .orElse(0.0);
-            Double ccScore = event.getOption(CreateCourseCommandCommon.CC_SCORE_PARAMETER)
+            Double ccScore = event.getOption(CourseCommandCommon.CC_SCORE_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asDouble)
                     .orElse(0.0);
-            Double tbktWeight = event.getOption(CreateCourseCommandCommon.TBKT_WEIGHT_PARAMETER)
+            Double tbktWeight = event.getOption(CourseCommandCommon.TBKT_WEIGHT_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asDouble)
                     .orElse(0.0);
-            Double tbktScore = event.getOption(CreateCourseCommandCommon.TBKT_SCORE_PARAMETER)
+            Double tbktScore = event.getOption(CourseCommandCommon.TBKT_SCORE_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asDouble)
                     .orElse(0.0);
-            Double bttlWeight = event.getOption(CreateCourseCommandCommon.BTTL_WEIGHT_PARAMETER)
+            Double bttlWeight = event.getOption(CourseCommandCommon.BTTL_WEIGHT_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asDouble)
                     .orElse(0.0);
-            Double bttlScore = event.getOption(CreateCourseCommandCommon.BTTL_SCORE_PARAMETER)
+            Double bttlScore = event.getOption(CourseCommandCommon.BTTL_SCORE_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asDouble)
                     .orElse(0.0);
-            Double ckWeight = event.getOption(CreateCourseCommandCommon.CK_WEIGHT_PARAMETER)
+            Double ckWeight = event.getOption(CourseCommandCommon.CK_WEIGHT_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asDouble)
                     .orElse(0.0);
-            Double ckScore = event.getOption(CreateCourseCommandCommon.CK_SCORE_PARAMETER)
+            Double ckScore = event.getOption(CourseCommandCommon.CK_SCORE_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asDouble)
                     .orElse(0.0);

@@ -9,10 +9,9 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import vn.edu.ptit.duongvct.discord_bot_test1.commands.SlashCommand;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.resource.CreateResourceCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.resource.LearningResourceCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.constants.ResourceType;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.LearningResource;
-import vn.edu.ptit.duongvct.discord_bot_test1.repository.LearningResourceRepository;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.LearningResourceService;
 
 @Component
@@ -29,27 +28,27 @@ public class CreateResourceCommand implements SlashCommand {
     public Mono<Void> handle(ChatInputInteractionEvent event) {
         return Mono.fromCallable(() -> {
             User user = event.getInteraction().getUser();
-            String name = event.getOption(CreateResourceCommandCommon.NAME_PARAMETER)
+            String name = event.getOption(LearningResourceCommandCommon.NAME_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("Unnamed");
-            String description = event.getOption(CreateResourceCommandCommon.DESCRIPTION_PARAMETER)
+            String description = event.getOption(LearningResourceCommandCommon.DESCRIPTION_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
-            String link = event.getOption(CreateResourceCommandCommon.LINK_PARAMETER)
+            String link = event.getOption(LearningResourceCommandCommon.LINK_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
-            String courseId = event.getOption(CreateResourceCommandCommon.COURSE_ID_PARAMETER)
+            String courseId = event.getOption(LearningResourceCommandCommon.COURSE_ID_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
-            String typeStr = event.getOption(CreateResourceCommandCommon.TYPE_PARAMETER)
+            String typeStr = event.getOption(LearningResourceCommandCommon.TYPE_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("LEARNING");
-            String topicId = event.getOption(CreateResourceCommandCommon.TOPIC_ID_PARAMETER)
+            String topicId = event.getOption(LearningResourceCommandCommon.TOPIC_ID_PARAMETER)
                     .flatMap(ApplicationCommandInteractionOption::getValue)
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");

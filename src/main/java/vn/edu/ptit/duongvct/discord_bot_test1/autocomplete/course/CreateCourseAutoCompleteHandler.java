@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import vn.edu.ptit.duongvct.discord_bot_test1.autocomplete.AutoCompleteHandler;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.course.CreateCourseCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.course.CourseCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class CreateCourseAutoCompleteHandler implements AutoCompleteHandler {
     @Override
     public boolean supports(ChatInputAutoCompleteEvent event) {
         return SlashCommandCommon.CREATE_COURSE_COMMAND.equals(event.getCommandName())
-                && CreateCourseCommandCommon.TOPIC_ID_PARAMETER.equals(event.getFocusedOption().getName());
+                && CourseCommandCommon.TOPIC_ID_PARAMETER.equals(event.getFocusedOption().getName());
     }
 
     @Override

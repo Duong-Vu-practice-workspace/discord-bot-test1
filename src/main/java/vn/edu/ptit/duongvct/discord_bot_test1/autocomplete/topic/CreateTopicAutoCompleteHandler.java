@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 import vn.edu.ptit.duongvct.discord_bot_test1.autocomplete.AutoCompleteHandler;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.topic.CreateTopicCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.topic.TopicCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
@@ -20,7 +20,7 @@ public class CreateTopicAutoCompleteHandler implements AutoCompleteHandler {
     @Override
     public boolean supports(ChatInputAutoCompleteEvent event) {
         return SlashCommandCommon.CREATE_TOPIC_COMMAND.equals(event.getCommandName()) &&
-                CreateTopicCommandCommon.PARENT_ID_PARAMETER.equals(event.getFocusedOption().getName());
+                TopicCommandCommon.PARENT_ID_PARAMETER.equals(event.getFocusedOption().getName());
     }
 
     @Override

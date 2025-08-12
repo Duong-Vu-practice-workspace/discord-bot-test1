@@ -5,13 +5,13 @@ import discord4j.discordjson.json.ApplicationCommandOptionData;
 import discord4j.discordjson.json.ApplicationCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.DiscordParameterType;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
-import vn.edu.ptit.duongvct.discord_bot_test1.common.resource.CreateResourceCommandCommon;
+import vn.edu.ptit.duongvct.discord_bot_test1.common.resource.LearningResourceCommandCommon;
 
 public class CreateResourceCommandRequest {
     public static ApplicationCommandRequest CREATE_RESOURCE_COMMAND_REQUEST() {
         return ApplicationCommandRequest.builder()
                 .name(SlashCommandCommon.CREATE_RESOURCE_COMMAND)
-                .description(CreateResourceCommandCommon.CREATE_RESOURCE_COMMAND_DESCRIPTION)
+                .description(LearningResourceCommandCommon.CREATE_RESOURCE_COMMAND_DESCRIPTION)
                 .addOption(NAME_PARAMETER())
                 .addOption(LINK_PARAMETER())
                 .addOption(COURSE_ID_PARAMETER())
@@ -23,32 +23,32 @@ public class CreateResourceCommandRequest {
 
     private static ApplicationCommandOptionData NAME_PARAMETER() {
         return ApplicationCommandOptionData.builder()
-                .name(CreateResourceCommandCommon.NAME_PARAMETER)
-                .description(CreateResourceCommandCommon.CreateResourceParameterCommon.NAME_PARAMETER_DESCRIPTION)
+                .name(LearningResourceCommandCommon.NAME_PARAMETER)
+                .description(LearningResourceCommandCommon.LearningResourceParameterCommon.NAME_PARAMETER_DESCRIPTION)
                 .type(DiscordParameterType.getType(DiscordParameterType.STRING))
                 .required(true)
                 .build();
     }
     private static ApplicationCommandOptionData DESCRIPTION_PARAMETER() {
         return ApplicationCommandOptionData.builder()
-                .name(CreateResourceCommandCommon.DESCRIPTION_PARAMETER)
-                .description(CreateResourceCommandCommon.CreateResourceParameterCommon.DESCRIPTION_PARAMETER_DESCRIPTION)
+                .name(LearningResourceCommandCommon.DESCRIPTION_PARAMETER)
+                .description(LearningResourceCommandCommon.LearningResourceParameterCommon.DESCRIPTION_PARAMETER_DESCRIPTION)
                 .type(DiscordParameterType.getType(DiscordParameterType.STRING))
                 .required(false)
                 .build();
     }
     private static ApplicationCommandOptionData LINK_PARAMETER() {
         return ApplicationCommandOptionData.builder()
-                .name(CreateResourceCommandCommon.LINK_PARAMETER)
-                .description(CreateResourceCommandCommon.CreateResourceParameterCommon.LINK_PARAMETER_DESCRIPTION)
+                .name(LearningResourceCommandCommon.LINK_PARAMETER)
+                .description(LearningResourceCommandCommon.LearningResourceParameterCommon.LINK_PARAMETER_DESCRIPTION)
                 .type(DiscordParameterType.getType(DiscordParameterType.STRING))
                 .required(true)
                 .build();
     }
     private static ApplicationCommandOptionData COURSE_ID_PARAMETER() {
         return ApplicationCommandOptionData.builder()
-                .name(CreateResourceCommandCommon.COURSE_ID_PARAMETER)
-                .description(CreateResourceCommandCommon.CreateResourceParameterCommon.COURSE_ID_PARAMETER_DESCRIPTION)
+                .name(LearningResourceCommandCommon.COURSE_ID_PARAMETER)
+                .description(LearningResourceCommandCommon.LearningResourceParameterCommon.COURSE_ID_PARAMETER_DESCRIPTION)
                 .type(DiscordParameterType.getType(DiscordParameterType.STRING))
                 .required(true)
                 .autocomplete(true)
@@ -56,8 +56,8 @@ public class CreateResourceCommandRequest {
     }
     private static ApplicationCommandOptionData TYPE_PARAMETER() {
         return ApplicationCommandOptionData.builder()
-                .name(CreateResourceCommandCommon.TYPE_PARAMETER)
-                .description(CreateResourceCommandCommon.CreateResourceParameterCommon.TYPE_PARAMETER_DESCRIPTION)
+                .name(LearningResourceCommandCommon.TYPE_PARAMETER)
+                .description(LearningResourceCommandCommon.LearningResourceParameterCommon.TYPE_PARAMETER_DESCRIPTION)
                 .type(DiscordParameterType.getType(DiscordParameterType.STRING))
                 .required(true)
                 .addChoice(ApplicationCommandOptionChoiceData.builder().name("LEARNING").value("LEARNING").build())
@@ -66,8 +66,8 @@ public class CreateResourceCommandRequest {
     }
     private static ApplicationCommandOptionData TOPIC_ID_PARAMETER() {
         return ApplicationCommandOptionData.builder()
-                .name(CreateResourceCommandCommon.TOPIC_ID_PARAMETER)
-                .description(CreateResourceCommandCommon.CreateResourceParameterCommon.TOPIC_ID_PARAMETER_DESCRIPTION)
+                .name(LearningResourceCommandCommon.TOPIC_ID_PARAMETER)
+                .description(LearningResourceCommandCommon.LearningResourceParameterCommon.TOPIC_ID_PARAMETER_DESCRIPTION)
                 .type(DiscordParameterType.getType(DiscordParameterType.STRING))
                 .required(true)
                 .autocomplete(true)

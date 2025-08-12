@@ -1,6 +1,6 @@
 package vn.edu.ptit.duongvct.discord_bot_test1.common.course;
 
-public final class CreateCourseCommandCommon {
+public final class CourseCommandCommon {
     public static final String CREATE_COURSE_COMMAND_DESCRIPTION = "Create a course";
     public static final String NAME_PARAMETER = "name";
     public static final String TOPIC_ID_PARAMETER = "topic-id";
@@ -13,7 +13,7 @@ public final class CreateCourseCommandCommon {
     public static final String BTTL_SCORE_PARAMETER = "bttl-score";
     public static final String CK_WEIGHT_PARAMETER = "ck-weight";
     public static final String CK_SCORE_PARAMETER = "ck-score";
-    public static class CreateCourseParameterCommon {
+    public static class CourseParameterCommon {
         public static final String NAME_PARAMETER_DESCRIPTION = "Course name";
         public static final String TOPIC_ID_PARAMETER_DESCRIPTION = "Topic of the course";
         public static final String DESCRIPTION_PARAMETER_DESCRIPTION = "Course description";
