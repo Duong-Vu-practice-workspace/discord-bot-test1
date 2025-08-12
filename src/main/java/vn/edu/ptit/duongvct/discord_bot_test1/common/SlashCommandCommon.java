@@ -18,6 +18,9 @@ public final class SlashCommandCommon {
     public static final String DELETE_TOPIC_COMMAND = "delete-topic";
     //event
     public static final String CREATE_EVENT_COMMAND = "create-event";
+    public static final String EDIT_EVENT_COMMAND = "edit-event";
+    public static final String GET_EVENT_COMMAND = "get-event";
+    public static final String DELETE_EVENT_COMMAND = "delete-event";
     //course
     public static final String CREATE_COURSE_COMMAND = "create-course";
     //resource

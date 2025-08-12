@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface EventRepository extends MongoRepository<Event, String> {
     List<Event> findByStartTimeBetween(LocalDateTime from, LocalDateTime to);
+    List<Event> findByUserIdAndNameContainingIgnoreCase(String userId, String name);
 }

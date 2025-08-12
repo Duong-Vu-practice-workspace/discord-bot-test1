@@ -1,5 +1,6 @@
 package vn.edu.ptit.duongvct.discord_bot_test1.service;
 
+import discord4j.discordjson.json.ApplicationCommandOptionChoiceData;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import vn.edu.ptit.duongvct.discord_bot_test1.entity.Event;
 import vn.edu.ptit.duongvct.discord_bot_test1.repository.EventRepository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -94,5 +96,18 @@ public class EventService {
      */
     public List<Event> findEventsBetween(LocalDateTime from, LocalDateTime to) {
         return eventRepository.findByStartTimeBetween(from, to);
+    }
+    public List<ApplicationCommandOptionChoiceData> getAllEventChoices(String query, String userId) {
+        return new ArrayList<>(eventRepository.findByUserIdAndNameContainingIgnoreCase(userId, query)
+                .stream()
+                .map(event -> ApplicationCommandOptionChoiceData.builder()
+                        .name(event.getName())
+                        .value(event.getId())
+                        .build())
+                .limit(25)
+                .toList());
+    }
+    public Event findEventById(String eventId) {
+        return eventRepository.findById(eventId).orElse(null);
     }
 }
