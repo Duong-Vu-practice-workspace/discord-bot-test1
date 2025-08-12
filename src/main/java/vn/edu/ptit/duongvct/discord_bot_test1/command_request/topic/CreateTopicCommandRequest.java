@@ -14,7 +14,9 @@ import static vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon.C
 
 @Slf4j
 public final class CreateTopicCommandRequest {
-    public static ApplicationCommandRequest CREATE_TOPIC_COMMAND_REQUEST () {
+    public static ApplicationCommandRequest CREATE_TOPIC_COMMAND_REQUEST (
+            
+    ) {
         return ApplicationCommandRequest.builder()
                 .name(CREATE_TOPIC_COMMAND)
                 .description(CREATE_TOPIC_COMMAND_DESCRIPTION)

@@ -15,12 +15,11 @@ import java.util.Objects;
 
 @Component
 @AllArgsConstructor
-public class CreateTopicAutoCompleteHandler implements AutoCompleteHandler {
+public class TopicParentIdAutoCompleteHandler implements AutoCompleteHandler {
     private final TopicService topicService;
     @Override
     public boolean supports(ChatInputAutoCompleteEvent event) {
-        return SlashCommandCommon.CREATE_TOPIC_COMMAND.equals(event.getCommandName()) &&
-                TopicCommandCommon.PARENT_ID_PARAMETER.equals(event.getFocusedOption().getName());
+        return isParentIdParameter(event) || isTopicIdParameter(event);
     }
 
     @Override
@@ -28,10 +27,15 @@ public class CreateTopicAutoCompleteHandler implements AutoCompleteHandler {
         String userId = event.getInteraction().getUser().getId().asString();
         String query = Objects.requireNonNull(event.getFocusedOption().getValue().orElse(null)).asString();
         List<ApplicationCommandOptionChoiceData> choices =
-                topicService.getAllTopicChoices(query, userId)
-                        .stream()
-                        .limit(25)
-                        .toList();
+                topicService.getAllTopicChoices(query, userId);
         return event.respondWithSuggestions(choices);
+    }
+    private boolean isParentIdParameter(ChatInputAutoCompleteEvent event) {
+        return ((SlashCommandCommon.CREATE_TOPIC_COMMAND.equals(event.getCommandName())) || (SlashCommandCommon.EDIT_TOPIC_COMMAND.equals(event.getCommandName()))) &&
+                TopicCommandCommon.PARENT_ID_PARAMETER.equals(event.getFocusedOption().getName());
+    }
+    private boolean isTopicIdParameter(ChatInputAutoCompleteEvent event) {
+        return ((SlashCommandCommon.GET_TOPIC_COMMAND.equals(event.getCommandName())) || (SlashCommandCommon.DELETE_TOPIC_COMMAND.equals(event.getCommandName())) || (SlashCommandCommon.EDIT_TOPIC_COMMAND.equals(event.getCommandName())) ) &&
+                TopicCommandCommon.TOPIC_ID_PARAMETER.equals(event.getFocusedOption().getName());
     }
 }

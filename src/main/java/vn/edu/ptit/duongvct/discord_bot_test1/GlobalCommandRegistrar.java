@@ -12,6 +12,9 @@ import vn.edu.ptit.duongvct.discord_bot_test1.command_request.course.CreateCours
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.event.CreateEventCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.learning_resource.CreateResourceCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.CreateTopicCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.DeleteTopicCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.EditTopicCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.GetTopicCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
 
@@ -39,6 +42,9 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
                 PING_COMMAND_REQUEST(),
                 GET_AVATAR_COMMAND_REQUEST(),
                 CreateTopicCommandRequest.CREATE_TOPIC_COMMAND_REQUEST(),
+                EditTopicCommandRequest.EDIT_TOPIC_COMMAND_REQUEST(),
+                GetTopicCommandRequest.GET_TOPIC_COMMAND_REQUEST(),
+                DeleteTopicCommandRequest.DELETE_TOPIC_COMMAND_REQUEST(),
                 CreateEventCommandRequest.CREATE_EVENT_COMMAND_REQUEST(),
                 CreateCourseCommandRequest.CREATE_COURSE_COMMAND_REQUEST(),
                 CreateResourceCommandRequest.CREATE_RESOURCE_COMMAND_REQUEST()

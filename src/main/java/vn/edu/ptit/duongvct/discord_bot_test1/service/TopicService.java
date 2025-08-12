@@ -30,6 +30,7 @@ public class TopicService {
                         .name(buildTopicPath(topic, topicMap))
                         .value(topic.getId())
                         .build())
+                .limit(24)
                 .toList());
         parentChoices.add(ApplicationCommandOptionChoiceData.builder()
             .name("root")
@@ -50,6 +51,13 @@ public class TopicService {
             path.insert(0, current.getName() + "/");
         }
         return path.toString();
+    }
+
+    public Topic editTopic(Topic topic) {
+        return this.topicRepository.save(topic);
+    }
+    public Topic findTopicById(String topicId) {
+        return this.topicRepository.findById(topicId).orElse(null);
     }
 
 

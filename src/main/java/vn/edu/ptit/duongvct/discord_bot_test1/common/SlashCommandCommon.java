@@ -11,8 +11,15 @@ public final class SlashCommandCommon {
     public static final String GREET_COMMAND = "greet";
     public static final String PING_COMMAND = "ping";
     public static final String GET_AVATAR_COMMAND = "get-avatar";
+    //topic
     public static final String CREATE_TOPIC_COMMAND = "create-topic";
+    public static final String EDIT_TOPIC_COMMAND = "edit-topic";
+    public static final String GET_TOPIC_COMMAND = "get-topic";
+    public static final String DELETE_TOPIC_COMMAND = "delete-topic";
+    //event
     public static final String CREATE_EVENT_COMMAND = "create-event";
+    //course
     public static final String CREATE_COURSE_COMMAND = "create-course";
+    //resource
     public static final String CREATE_RESOURCE_COMMAND = "create-resource";
 }
