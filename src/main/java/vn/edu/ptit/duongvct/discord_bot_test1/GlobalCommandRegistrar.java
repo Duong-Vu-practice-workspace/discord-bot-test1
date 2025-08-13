@@ -9,6 +9,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.course.CreateCourseCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.course.DeleteCourseCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.course.EditCourseCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.course.GetCourseCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.event.CreateEventCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.event.DeleteEventCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.event.EditEventCommandRequest;
@@ -18,6 +21,7 @@ import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.CreateTopicC
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.DeleteTopicCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.EditTopicCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.GetTopicCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.commands.course.DeleteCourseCommand;
 import vn.edu.ptit.duongvct.discord_bot_test1.commands.event.DeleteEventCommand;
 import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
@@ -54,6 +58,9 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
                 EditEventCommandRequest.EDIT_EVENT_COMMAND_REQUEST(),
                 DeleteEventCommandRequest.DELETE_EVENT_COMMAND_REQUEST(),
                 CreateCourseCommandRequest.CREATE_COURSE_COMMAND_REQUEST(),
+                EditCourseCommandRequest.EDIT_COURSE_COMMAND_REQUEST(),
+                GetCourseCommandRequest.GET_COURSE_COMMAND_REQUEST(),
+                DeleteCourseCommandRequest.DELETE_COURSE_COMMAND_REQUEST(),
                 CreateResourceCommandRequest.CREATE_RESOURCE_COMMAND_REQUEST()
         );
 

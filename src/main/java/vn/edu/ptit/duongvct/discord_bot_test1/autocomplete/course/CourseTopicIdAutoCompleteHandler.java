@@ -15,11 +15,11 @@ import java.util.Objects;
 
 @Component
 @AllArgsConstructor
-public class CreateCourseAutoCompleteHandler implements AutoCompleteHandler {
+public class CourseTopicIdAutoCompleteHandler implements AutoCompleteHandler {
     private final TopicService topicService;
     @Override
     public boolean supports(ChatInputAutoCompleteEvent event) {
-        return SlashCommandCommon.CREATE_COURSE_COMMAND.equals(event.getCommandName())
+        return ((SlashCommandCommon.CREATE_COURSE_COMMAND.equals(event.getCommandName())) || (SlashCommandCommon.EDIT_COURSE_COMMAND.equals(event.getCommandName())))
                 && CourseCommandCommon.TOPIC_ID_PARAMETER.equals(event.getFocusedOption().getName());
     }
 

@@ -12,12 +12,13 @@ import vn.edu.ptit.duongvct.discord_bot_test1.common.SlashCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.common.event.EventCommandCommon;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Event;
 import vn.edu.ptit.duongvct.discord_bot_test1.repository.EventRepository;
+import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 
 @Component
 @AllArgsConstructor
 public class GetEventCommand implements SlashCommand {
     private final EventRepository eventRepository;
-
+    private final TopicService topicService;
     @Override
     public String getName() {
         return SlashCommandCommon.GET_EVENT_COMMAND;
@@ -39,6 +40,8 @@ public class GetEventCommand implements SlashCommand {
                     .addField("ID", found.getId(), false)
                     .addField("Name", found.getName(), false)
                     .addField("Description", found.getDescription(), false)
+                    .addField("Location", found.getLocation(), false)
+                    .addField("Topic", topicService.convertTopicNameToMeaningfulName(found.getTopicId()), false)
                     .addField("Start Time", found.getStartTime() != null ? found.getStartTime().toString() : "N/A", false)
                     .addField("End Time", found.getEndTime() != null ? found.getEndTime().toString() : "N/A", false)
                     .build();

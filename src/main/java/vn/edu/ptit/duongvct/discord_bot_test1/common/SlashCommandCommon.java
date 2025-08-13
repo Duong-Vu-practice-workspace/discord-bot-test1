@@ -23,6 +23,9 @@ public final class SlashCommandCommon {
     public static final String DELETE_EVENT_COMMAND = "delete-event";
     //course
     public static final String CREATE_COURSE_COMMAND = "create-course";
+    public static final String GET_COURSE_COMMAND = "get-course";
+    public static final String DELETE_COURSE_COMMAND = "delete-course";
+    public static final String EDIT_COURSE_COMMAND = "edit-course";
     //resource
     public static final String CREATE_RESOURCE_COMMAND = "create-resource";
 }

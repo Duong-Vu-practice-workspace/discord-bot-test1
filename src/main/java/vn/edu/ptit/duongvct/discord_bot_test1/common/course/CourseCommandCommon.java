@@ -3,6 +3,7 @@ package vn.edu.ptit.duongvct.discord_bot_test1.common.course;
 public final class CourseCommandCommon {
     public static final String CREATE_COURSE_COMMAND_DESCRIPTION = "Create a course";
     public static final String NAME_PARAMETER = "name";
+    public static final String COURSE_ID_PARAMETER = "course-id";
     public static final String TOPIC_ID_PARAMETER = "topic-id";
     public static final String DESCRIPTION_PARAMETER = "description";
     public static final String CC_WEIGHT_PARAMETER = "cc-weight";

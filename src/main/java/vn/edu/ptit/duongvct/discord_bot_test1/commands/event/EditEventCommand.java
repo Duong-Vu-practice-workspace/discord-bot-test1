@@ -35,7 +35,7 @@ public class EditEventCommand implements SlashCommand {
                     .map(ApplicationCommandInteractionOptionValue::asString)
                     .orElse("");
             Event found = eventService.findEventById(eventId);
-            if (found == null) {
+            if (eventId.isBlank() || found == null) {
                 throw new IllegalArgumentException("Event not found.");
             }
             String newName = event.getOption(EventCommandCommon.NAME_PARAMETER)
