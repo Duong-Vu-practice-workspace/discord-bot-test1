@@ -28,4 +28,7 @@ public final class SlashCommandCommon {
     public static final String EDIT_COURSE_COMMAND = "edit-course";
     //resource
     public static final String CREATE_RESOURCE_COMMAND = "create-resource";
+    public static final String GET_RESOURCE_COMMAND = "get-resource";
+    public static final String EDIT_RESOURCE_COMMAND = "edit-resource";
+    public static final String DELETE_RESOURCE_COMMAND = "delete-resource";
 }

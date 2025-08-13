@@ -36,4 +36,7 @@ public class CourseService {
                         .build())
                 .toList());
     }
+    public Course findCourseById(String id) {
+        return courseRepository.findById(id).orElse(null);
+    }
 }

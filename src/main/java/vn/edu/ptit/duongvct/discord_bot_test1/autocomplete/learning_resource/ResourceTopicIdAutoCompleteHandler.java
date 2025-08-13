@@ -13,16 +13,16 @@ import vn.edu.ptit.duongvct.discord_bot_test1.service.TopicService;
 import java.util.List;
 
 @Component
-public class CreateResourceTopicIdAutoCompleteHandler implements AutoCompleteHandler {
+public class ResourceTopicIdAutoCompleteHandler implements AutoCompleteHandler {
     private final TopicService topicService;
 
-    public CreateResourceTopicIdAutoCompleteHandler(TopicService topicService) {
+    public ResourceTopicIdAutoCompleteHandler(TopicService topicService) {
         this.topicService = topicService;
     }
 
     @Override
     public boolean supports(ChatInputAutoCompleteEvent event) {
-        return SlashCommandCommon.CREATE_RESOURCE_COMMAND.equals(event.getCommandName())
+        return ((SlashCommandCommon.CREATE_RESOURCE_COMMAND.equals(event.getCommandName())) || (SlashCommandCommon.EDIT_RESOURCE_COMMAND.equals(event.getCommandName())))
                 && LearningResourceCommandCommon.TOPIC_ID_PARAMETER.equals(event.getFocusedOption().getName());
     }
 

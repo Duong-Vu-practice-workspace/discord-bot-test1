@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface LearningResourceRepository extends MongoRepository<LearningResource, String> {
     List<LearningResource> findByName(String name);
+    List<LearningResource> findByUserIdAndNameContainingIgnoreCase(String userId, String query);
 }

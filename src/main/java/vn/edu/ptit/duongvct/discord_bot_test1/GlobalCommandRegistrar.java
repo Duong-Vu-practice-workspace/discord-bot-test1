@@ -17,6 +17,9 @@ import vn.edu.ptit.duongvct.discord_bot_test1.command_request.event.DeleteEventC
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.event.EditEventCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.event.GetEventCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.learning_resource.CreateResourceCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.learning_resource.DeleteResourceCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.learning_resource.EditResourceCommandRequest;
+import vn.edu.ptit.duongvct.discord_bot_test1.command_request.learning_resource.GetResourceCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.CreateTopicCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.DeleteTopicCommandRequest;
 import vn.edu.ptit.duongvct.discord_bot_test1.command_request.topic.EditTopicCommandRequest;
@@ -49,19 +52,26 @@ public class GlobalCommandRegistrar implements ApplicationRunner {
                 GREET_COMMAND_REQUEST(),
                 PING_COMMAND_REQUEST(),
                 GET_AVATAR_COMMAND_REQUEST(),
+                //topic
                 CreateTopicCommandRequest.CREATE_TOPIC_COMMAND_REQUEST(),
                 EditTopicCommandRequest.EDIT_TOPIC_COMMAND_REQUEST(),
                 GetTopicCommandRequest.GET_TOPIC_COMMAND_REQUEST(),
                 DeleteTopicCommandRequest.DELETE_TOPIC_COMMAND_REQUEST(),
+                //event
                 CreateEventCommandRequest.CREATE_EVENT_COMMAND_REQUEST(),
                 GetEventCommandRequest.GET_EVENT_COMMAND_REQUEST(),
                 EditEventCommandRequest.EDIT_EVENT_COMMAND_REQUEST(),
                 DeleteEventCommandRequest.DELETE_EVENT_COMMAND_REQUEST(),
+                //course
                 CreateCourseCommandRequest.CREATE_COURSE_COMMAND_REQUEST(),
                 EditCourseCommandRequest.EDIT_COURSE_COMMAND_REQUEST(),
                 GetCourseCommandRequest.GET_COURSE_COMMAND_REQUEST(),
                 DeleteCourseCommandRequest.DELETE_COURSE_COMMAND_REQUEST(),
-                CreateResourceCommandRequest.CREATE_RESOURCE_COMMAND_REQUEST()
+                //resource
+                CreateResourceCommandRequest.CREATE_RESOURCE_COMMAND_REQUEST(),
+                GetResourceCommandRequest.GET_RESOURCE_COMMAND_REQUEST(),
+                EditResourceCommandRequest.EDIT_RESOURCE_COMMAND_REQUEST(),
+                DeleteResourceCommandRequest.DELETE_RESOURCE_COMMAND_REQUEST()
         );
 
         applicationService.bulkOverwriteGlobalApplicationCommand(applicationId, commands)

@@ -8,6 +8,7 @@ public final class LearningResourceCommandCommon {
     public static final String COURSE_ID_PARAMETER = "course-id";
     public static final String TOPIC_ID_PARAMETER = "topic-id";
     public static final String TYPE_PARAMETER = "type";
+    public static final String RESOURCE_ID_PARAMETER = "resource-id";
 
     public static class LearningResourceParameterCommon {
         public static final String NAME_PARAMETER_DESCRIPTION = "Resource name";
@@ -16,5 +17,6 @@ public final class LearningResourceCommandCommon {
         public static final String COURSE_ID_PARAMETER_DESCRIPTION = "Course of the resource";
         public static final String TOPIC_ID_PARAMETER_DESCRIPTION = "Topic of the resource";
         public static final String TYPE_PARAMETER_DESCRIPTION = "Resource type";
+        public static final String RESOURCE_ID_PARAMETER_DESCRIPTION = "Resource ID";
     }
 }

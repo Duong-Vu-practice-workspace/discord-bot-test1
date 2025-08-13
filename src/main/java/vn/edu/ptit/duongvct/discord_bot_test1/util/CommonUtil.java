@@ -2,6 +2,7 @@ package vn.edu.ptit.duongvct.discord_bot_test1.util;
 
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.Course;
 import vn.edu.ptit.duongvct.discord_bot_test1.entity.CourseMark;
+import vn.edu.ptit.duongvct.discord_bot_test1.entity.LearningResource;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -58,5 +59,7 @@ public class CommonUtil {
         }
         return "F";
     }
-
+    public static String getStringNullSafety(String input) {
+        return input != null ? input : "N/A";
+    }
 }
