@@ -12,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import vn.edu.ptit.duongvct.discord_bot_test1.service.DiscordGatewayManager;
 
 @SpringBootApplication
 @EnableScheduling
@@ -34,10 +35,9 @@ public class DiscordBotTest1Application {
 				.login()
 				.block();
 	}
-
 	@Bean
-	public RestClient discordRestClient(GatewayDiscordClient client) {
-		return client.getRestClient();
+	public RestClient discordRestClient(DiscordGatewayManager manager) {
+		return manager.getRestClient();
 	}
 
 }

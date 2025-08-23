@@ -22,13 +22,10 @@ public class SlashCommandListener {
     private final Collection<SlashCommand> commands;
     private final List<AutoCompleteHandler> autoCompleteHandlers;
     private final DiscordExceptionHandler discordExceptionHandler;
-    public SlashCommandListener(List<SlashCommand> slashCommands, GatewayDiscordClient client, List<AutoCompleteHandler> autoCompleteHandlers, DiscordExceptionHandler discordExceptionHandler) {
+    public SlashCommandListener(List<SlashCommand> slashCommands, List<AutoCompleteHandler> autoCompleteHandlers, DiscordExceptionHandler discordExceptionHandler) {
         this.commands = slashCommands;
         this.autoCompleteHandlers = autoCompleteHandlers;
         this.discordExceptionHandler = discordExceptionHandler;
-
-        client.on(ChatInputInteractionEvent.class, this::handle).subscribe();
-        client.on(ChatInputAutoCompleteEvent.class, this::handleAutocomplete).subscribe();
     }
 
 
@@ -45,6 +42,17 @@ public class SlashCommandListener {
                                 .onErrorResume(ex -> discordExceptionHandler.handleException(event, ex))
                 )
                 ;
+    }
+    public Mono<Void> register(discord4j.core.GatewayDiscordClient client) {
+        // register handlers and keep subscriptions per-client
+        client.on(ChatInputInteractionEvent.class, this::handle)
+                .doOnError(e -> log.error("Interaction event stream error", e))
+                .subscribe();
+
+        client.on(ChatInputAutoCompleteEvent.class, this::handleAutocomplete)
+                .doOnError(e -> log.error("Autocomplete event stream error", e))
+                .subscribe();
+        return Mono.empty();
     }
     private Mono<Void> handleAutocomplete(ChatInputAutoCompleteEvent event) {
         return autoCompleteHandlers.stream()

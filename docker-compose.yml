@@ -1,0 +1,16 @@
+services:
+  discord-bot:
+    build: .
+    container_name: discord-bot
+    network_mode: "host"
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      SPRING_DATA_MONGODB_URI: ${SPRING_DATA_MONGODB_URI}
+      SPRING_DATA_MONGODB_DATABASE: ${SPRING_DATA_MONGODB_DATABASE}
+      DISCORD_TOKEN: ${DISCORD_TOKEN}
+      KEEPALIVE_URL: ${KEEPALIVE_URL}
+      CALENDAR_ID: ${CALENDAR_ID}
+      SPRING_APPLICATION_NAME: ${SPRING_APPLICATION_NAME}
+      EVENT_NOTIFICATION_CHANNEL_ID: ${EVENT_NOTIFICATION_CHANNEL_ID}
